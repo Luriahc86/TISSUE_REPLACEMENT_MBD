@@ -1,0 +1,9 @@
+{
+  "database": {
+    "host": "localhost",
+    "username": "root",
+    "password": "",
+    "dbname": "cleaning_system",
+    "charset": "utf8mb4"
+  }
+}
