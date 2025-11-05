@@ -30,7 +30,7 @@ BEGIN
         VALUES('laporan_penggantian', LAST_INSERT_ID(), 'INSERT', p_id_pegawai, 'PEGAWAI',
                CONCAT('dispenser_id=', p_id_dispenser, '; jumlah=', p_jumlah_tisu));
         COMMIT;
-        SELECT 'OK' AS message;
+        SELECT 'laporan berhasil di buat' AS message;
       END IF;
   END IF;
 END$$
@@ -43,7 +43,7 @@ BEGIN
     SELECT 'ERROR: Login admin gagal' AS message;
   ELSE
     INSERT INTO login(id_admin) VALUES (v_id);
-    SELECT 'OK' AS message, v_id AS id_admin;
+    SELECT 'Login berhasil' AS message, v_id AS id_admin;
   END IF;
 END$$
 
@@ -55,7 +55,7 @@ BEGIN
     SELECT 'ERROR: Login pegawai gagal' AS message;
   ELSE
     INSERT INTO login(id_pegawai) VALUES (v_id);
-    SELECT 'OK' AS message, v_id AS id_pegawai;
+    SELECT 'Login berhasil' AS message, v_id AS id_pegawai;
   END IF;
 END$$
 
@@ -78,7 +78,7 @@ BEGIN
       INSERT INTO log_aktivitas(tabel,id_referensi,aksi,id_aktor,tipe_aktor,keterangan)
       VALUES('pegawai',LAST_INSERT_ID(),'INSERT-BY-ADMIN',p_id_admin,'ADMIN',CONCAT('username=',p_username));
       COMMIT;
-      SELECT 'OK' AS message;
+      SELECT 'berhasil menambahkan pegawai' AS message;
     END IF;
 END$$
 
@@ -103,7 +103,7 @@ BEGIN
       INSERT INTO log_aktivitas(tabel,id_referensi,aksi,id_aktor,tipe_aktor,keterangan)
       VALUES('pegawai',p_id_pegawai,'UPDATE-BY-ADMIN',p_id_admin,'ADMIN',CONCAT('username_baru=',p_username_baru));
       COMMIT;
-      SELECT 'OK' AS message;
+      SELECT 'pegawai berhasil di update' AS message;
     END IF;
 END$$
 
@@ -123,7 +123,7 @@ BEGIN
       INSERT INTO log_aktivitas(tabel,id_referensi,aksi,id_aktor,tipe_aktor)
       VALUES('pegawai',p_id_pegawai,'DELETE-BY-ADMIN',p_id_admin,'ADMIN');
       COMMIT;
-      SELECT 'OK' AS message;
+      SELECT 'pegawai berhasil di hapus' AS message;
     END IF;
 END$$
 
@@ -149,7 +149,7 @@ BEGIN
       INSERT INTO log_aktivitas(tabel,id_referensi,aksi,id_aktor,tipe_aktor,keterangan)
       VALUES('lokasi',v_id,'INSERT-BY-ADMIN',p_id_admin,'ADMIN',CONCAT('nama=',p_nama_lokasi,'; area=',p_lokasi));
       COMMIT;
-      SELECT 'OK' AS message, v_id AS id_lokasi;
+      SELECT 'lokasi berhasil ditambahkan' AS message, v_id AS id_lokasi;
     END IF;
 END$$
 
@@ -176,7 +176,7 @@ BEGIN
       VALUES('lokasi',p_id_lokasi,'UPDATE-BY-ADMIN',p_id_admin,'ADMIN',
              CONCAT('nama_baru=',p_nama_lokasi_baru,'; area_baru=',p_lokasi_baru));
       COMMIT;
-      SELECT 'OK' AS message;
+      SELECT 'lokasi berhasil di update' AS message;
     END IF;
 END$$
 
@@ -196,7 +196,7 @@ BEGIN
       INSERT INTO log_aktivitas(tabel,id_referensi,aksi,id_aktor,tipe_aktor)
       VALUES('lokasi',p_id_lokasi,'DELETE-BY-ADMIN',p_id_admin,'ADMIN');
       COMMIT;
-      SELECT 'OK' AS message;
+      SELECT 'lokasi berhasil di hapus' AS message;
     END IF;
 END$$
 
@@ -229,7 +229,7 @@ BEGIN
         VALUES('dispenser',p_id_dispenser,'UPDATE-BY-ADMIN',p_id_admin,'ADMIN',
                CONCAT('lokasi_baru=',p_id_lokasi_baru,'; kondisi_baru=',v_kondisi));
         COMMIT;
-        SELECT 'OK' AS message;
+        SELECT 'dispenser berhasil di update' AS message;
       END IF;
     END IF;
 END$$
@@ -250,7 +250,7 @@ BEGIN
       INSERT INTO log_aktivitas(tabel,id_referensi,aksi,id_aktor,tipe_aktor)
       VALUES('dispenser',p_id_dispenser,'DELETE-BY-ADMIN',p_id_admin,'ADMIN');
       COMMIT;
-      SELECT 'OK' AS message;
+      SELECT 'dispenser berhasil di hapus' AS message;
     END IF;
 END$$
 
@@ -284,6 +284,6 @@ proc: BEGIN
       VALUES('dispenser',LAST_INSERT_ID(),'INSERT-BY-ADMIN',p_id_admin,'ADMIN',
              CONCAT('lokasi_id=',p_id_lokasi,'; kondisi=',v_kondisi));
       COMMIT;
-      SELECT 'OK' AS message;
+      SELECT 'dispenser berhasil di tambahkan' AS message;
     END IF;
 END proc$$
