@@ -33,7 +33,7 @@ app.use("/api/master", masterRoutes);
 
 app.get("/", (req, res) => {
   res.json({
-    message: "🧻 TISU-CUY API is running!",
+    message: "TISU-CUY API is running!",
     endpoints: {
       laporan: "/api/laporan",
       master: "/api/master"
@@ -42,5 +42,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running di http://localhost:${PORT}`);
+  console.log(`SERVERMU UDAH JALAN CESKUUU http://localhost:${PORT}`);
 });
